@@ -13,7 +13,11 @@
 1. افتح تطبيق Claude ← تبويب **Code**.
 2. اضغط **+** جنب خانة الكتابة ← **Plugins** ← **Browse plugins**.
 3. **Add** (فوق يمين) ← **Add marketplace** ← **Add from a repository**.
-4. الصق رابط المستودع (يعطيك إيّاه حسين) واضغط **Sync**.
+4. الصق هذا الرابط واضغط **Sync**:
+
+```
+https://github.com/dndhan-coder/reel-studio
+```
 5. ثبّت **Reel Studio** من القائمة.
 6. افتح محادثة جديدة واكتب:
 
@@ -39,7 +43,7 @@
 ## من الطرفية بدلاً من التطبيق
 
 ```bash
-claude plugin marketplace add <owner>/<repo>
+claude plugin marketplace add dndhan-coder/reel-studio
 claude plugin install reel-studio@reel-studio
 ```
 

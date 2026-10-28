@@ -3,14 +3,24 @@
   "version": "1.0.0",
   "description": "استوديو ريلز كامل في Claude Code: قصّ الصمت، كابشن بخطّك وأسلوبك، لقطات B-roll من حسابك في Higgsfield، مشاهد متحرّكة، غلاف، وفحص جودة — مع صفحة اختيار داخلية تقرّر منها كل شيء مرّة واحدة. هدية من حسين المتروك.",
   "author": {
-    "name": "Hussain Almatrouk"
+    "name": "Hussain Almatrouk",
+    "url": "https://github.com/dndhan-coder"
   },
   "license": "MIT",
-  "keywords": ["reels", "video", "arabic", "captions", "higgsfield", "montage"],
+  "keywords": [
+    "reels",
+    "video",
+    "arabic",
+    "captions",
+    "higgsfield",
+    "montage"
+  ],
   "skills": [
     "./skills/reel-studio"
   ],
   "commands": [
     "./commands"
-  ]
+  ],
+  "homepage": "https://github.com/dndhan-coder/reel-studio",
+  "repository": "https://github.com/dndhan-coder/reel-studio"
 }
