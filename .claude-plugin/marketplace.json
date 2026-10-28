@@ -1,0 +1,14 @@
+{
+  "name": "reel-studio",
+  "owner": {
+    "name": "Hussain Almatrouk"
+  },
+  "description": "Reel Studio — استوديو ريلز عربيّ كامل لـClaude Code",
+  "plugins": [
+    {
+      "name": "reel-studio",
+      "source": "./",
+      "description": "من مقطع الجوال إلى ريل جاهز: قصّ، كابشن بخطّك، B-roll من Higgsfield، مشاهد، غلاف، فحص — بصفحة اختيار داخلية"
+    }
+  ]
+}

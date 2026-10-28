@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>استوديو الريلز</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Anton&family=Alexandria:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0f13;--panel:#15171d;--panel2:#1c1f27;--line:#272b36;--text:#f1f2f6;--mut:#9aa0ae;--acc:#FCC022;--ok:#6bc5b0;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;font-size:16px;line-height:1.6}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:20;background:rgba(14,15,19,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 28px;display:flex;align-items:center;gap:18px}
+.top h1{font-size:20px;font-weight:700}.top h1 span{color:var(--acc)}
+.nav{display:flex;gap:6px;margin-inline-start:auto;flex-wrap:wrap}
+.nav a{text-decoration:none;color:var(--mut);padding:6px 12px;border-radius:999px;font-size:14px}
+.nav a:hover,.nav a.on{color:var(--text);background:var(--panel2)}
+.wrap{display:grid;grid-template-columns:1fr 400px;gap:28px;padding:28px;max-width:1500px;margin:0 auto}
+@media (max-width:1100px){.wrap{grid-template-columns:1fr}.side{position:static!important}}
+.side{position:sticky;top:76px;align-self:start}
+.phone{width:360px;height:640px;margin:0 auto;border-radius:40px;background:#000;border:8px solid #2a2d36;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.phone .vid{position:absolute;inset:0;background:linear-gradient(160deg,#2b2f3a 0%,#121318 60%,#0b0b10 100%)}
+.phone .face{position:absolute;left:50%;top:38%;width:150px;height:150px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 40% 35%,#8f7a6a,#4a3d35 70%);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.phone .face:after{content:"";position:absolute;left:50%;top:95%;width:260px;height:260px;border-radius:50% 50% 0 0;transform:translateX(-50%);background:linear-gradient(#3b3f4b,#1e2027)}
+.phone .ui{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 28%)}
+.stage{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;transform:scale(.3333)}
+.side h3{margin:16px 0 4px;font-size:15px;color:var(--mut);font-weight:500;text-align:center}
+.sum{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;font-size:14px;margin-top:12px}
+.sum b{color:var(--acc);font-weight:600}
+section.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin-bottom:22px;scroll-margin-top:80px}
+section.card h2{font-size:19px;font-weight:700;margin-bottom:4px}
+section.card h2 small{color:var(--mut);font-weight:400;font-size:13px;margin-inline-start:10px}
+section.card p.lead{color:var(--mut);font-size:14px;margin-bottom:14px}
+.grid{display:grid;gap:12px}.g4{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}.g3{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.opt{background:var(--panel2);border:2px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;transition:.15s;position:relative}
+.opt:hover{border-color:#3a4050}.opt.on{border-color:var(--acc);box-shadow:0 0 0 3px rgba(252,192,34,.18)}
+.opt .t{font-weight:700;font-size:15px}.opt .d{color:var(--mut);font-size:13px;line-height:1.5;margin-top:2px}
+.opt .ic{font-size:26px;margin-bottom:6px}
+.opt.on:after{content:"✓";position:absolute;top:10px;left:12px;width:22px;height:22px;border-radius:50%;background:var(--acc);color:#111;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+.chip{padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--mut);font-size:13px;cursor:pointer;background:var(--panel2)}
+.chip.on{color:#111;background:var(--acc);border-color:var(--acc);font-weight:600}
+input[type=text],input[type=search],textarea,select{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:10px 14px;font:inherit;font-size:15px}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
+.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.row label{font-size:14px;color:var(--mut);min-width:110px}
+.fontgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;max-height:560px;overflow:auto;padding:4px;border:1px solid var(--line);border-radius:14px;background:#111318}
+.fcard{background:var(--panel2);border:2px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;min-height:96px}
+.fcard:hover{border-color:#3a4050}.fcard.on{border-color:var(--acc)}
+.fcard .nm{font-size:12px;color:var(--mut);display:flex;justify-content:space-between}
+.fcard .nm b{color:var(--text);font-weight:600}
+.fcard .sm{font-size:30px;line-height:1.35;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slots{display:flex;gap:12px;margin:12px 0;flex-wrap:wrap}
+.slot{flex:1;min-width:220px;background:var(--panel2);border:1px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:14px}
+.slot b{color:var(--acc)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.tile{background:var(--panel2);border:2px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer}
+.tile.on{border-color:var(--acc)}
+.tile .pv{height:308px;position:relative;overflow:hidden;background:linear-gradient(160deg,#2b2f3a,#0b0b10)}
+.tile .pv .stage{transform:scale(.16)}
+.tile .cap{padding:8px 12px}.tile .cap .t{font-weight:700;font-size:14px}.tile .cap .d{color:var(--mut);font-size:12px;line-height:1.4}
+.sw{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.swc{width:34px;height:34px;border-radius:50%;cursor:pointer;border:3px solid transparent}
+.swc.on{border-color:#fff;box-shadow:0 0 0 2px var(--acc)}
+.toggle{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-size:15px}
+.toggle input{appearance:none;width:46px;height:26px;border-radius:13px;background:#2a2e3a;position:relative;cursor:pointer;transition:.2s}
+.toggle input:checked{background:var(--acc)}
+.toggle input:before{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.toggle input:checked:before{right:23px}
+.note{background:rgba(252,192,34,.08);border:1px solid rgba(252,192,34,.35);border-radius:12px;padding:10px 14px;font-size:13px;color:#e8d7a3;margin-top:10px}
+code{background:#0b0c10;padding:2px 8px;border-radius:6px;font-family:ui-monospace,Menlo,monospace;font-size:13px;direction:ltr;unicode-bidi:isolate;color:#cdd3e0}
+.savebar{position:fixed;bottom:0;left:0;right:0;z-index:30;background:rgba(14,15,19,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 28px;display:flex;gap:16px;align-items:center}
+.btn{background:var(--acc);color:#111;border:0;border-radius:12px;padding:12px 26px;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:default}
+.status{color:var(--mut);font-size:14px}
+.status.ok{color:var(--ok)}
+.credit{margin-inline-start:auto;color:var(--mut);font-size:14px}
+.credit b{color:var(--acc);font-weight:600}
+.spacer{height:90px}
+.mini{font-size:13px;color:var(--mut)}
+.scenes{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.scene{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.scene b{display:block;font-size:14px}.scene span{font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>استوديو <span>الريلز</span></h1>
+  <nav class="nav">
+    <a href="#type">نوع الريل</a><a href="#font">الخطّ</a><a href="#caption">الكابشن</a><a href="#brand">الهوية</a><a href="#broll">B-roll</a><a href="#extras">اللمسات</a><a href="#scenes">المشاهد</a>
+  </nav>
+</header>
+
+<div class="wrap">
+<main>
+
+<section class="card" id="type">
+  <h2>١ · نوع الريل <small>يحدّد بنية المونتاج</small></h2>
+  <p class="lead">اختر الشكل الأقرب لطريقتك. كل خيار يغيّر ما يُرسم فوق الفيديو وكيف تُستعمل اللقطات.</p>
+  <div class="grid g4" id="typeGrid"></div>
+</section>
+
+<section class="card" id="font">
+  <h2>٢ · الخطّ <small>١٢٣ خطّاً مجانياً من Google Fonts</small></h2>
+  <p class="lead">اضغط خطّاً عربياً ليكون خطّ الكلام، وخطّاً إنجليزياً للأرقام والكلمات الإنجليزية. اكتب جملتك لتراها بكل الخطوط.</p>
+  <div class="row"><input type="search" id="fq" placeholder="ابحث باسم الخطّ…" style="max-width:260px"><input type="text" id="sample" value="اليوم بعلّمك ثلاث أخطاء يسوّيها كل مبتدئ" style="flex:1;min-width:260px"></div>
+  <div class="chips" id="langChips"><span class="chip on" data-l="arabic">عربي</span><span class="chip" data-l="english">إنجليزي</span><span class="chip" data-l="all">الكل</span></div>
+  <div class="chips" id="catChips"></div>
+  <div class="slots">
+    <div class="slot">خطّ العربي: <b id="slotAr">—</b></div>
+    <div class="slot">خطّ الأرقام والإنجليزي: <b id="slotLt">—</b></div>
+  </div>
+  <div class="fontgrid" id="fontGrid"></div>
+  <div class="note">عندك خطّ خاصّ مرخّص؟ انسخ ملفّاته (ttf/otf) إلى <code id="customDir">~/.reel-studio/fonts/custom/</code> واكتب اسمه هنا: <input type="text" id="customFont" placeholder="اسم الخطّ كما في اسم الملف" style="max-width:260px;display:inline-block;margin-inline-start:8px"> <span class="mini" id="customList"></span></div>
+</section>
+
+<section class="card" id="caption">
+  <h2>٣ · أسلوب الكابشن <small>معاينة حيّة بخطّك ولونك</small></h2>
+  <p class="lead">المعاينة في كل بطاقة هي المحرّك نفسه الذي يرسم الريل.</p>
+  <div class="tiles" id="capTiles"></div>
+  <div class="row" style="margin-top:14px"><label>الحجم</label><div class="chips" id="sizeChips"><span class="chip" data-v="s">صغير</span><span class="chip on" data-v="m">وسط</span><span class="chip" data-v="l">كبير</span></div></div>
+  <div class="row"><label>الموضع</label><div class="chips" id="posChips"><span class="chip on" data-v="low">تحت الوجه</span><span class="chip" data-v="center">الوسط</span><span class="chip" data-v="high">فوق</span></div></div>
+</section>
+
+<section class="card" id="brand">
+  <h2>٤ · الهوية</h2>
+  <div class="row"><label>اللون المميّز</label><div class="sw" id="swatches"></div><input type="color" id="accent" value="#FCC022" style="width:44px;height:34px;border:0;background:none;cursor:pointer"></div>
+  <div class="row"><label>لون النصّ</label><div class="chips" id="themeChips"><span class="chip on" data-v="dark">أبيض (لفيديو عاديّ)</span><span class="chip" data-v="light">أسود (لفيديو فاتح جداً)</span></div></div>
+  <div class="row"><label>حسابك</label><input type="text" id="handle" placeholder="@username" style="max-width:260px;direction:ltr"></div>
+  <div class="row"><label>اسمك أو علامتك</label><input type="text" id="brandName" placeholder="يظهر في الغلاف" style="max-width:320px"></div>
+</section>
+
+<section class="card" id="broll">
+  <h2>٥ · لقطات B-roll <small>تُولَّد من حسابك في هيغسفيلد</small></h2>
+  <p class="lead">لقطات مولَّدة تُقطع فوق كلامك حين تذكر شيئاً يُرى. كلود يكتب وصف كل لقطة من كلامك ويعرضه عليك قبل التوليد.</p>
+  <div class="row"><label class="toggle"><input type="checkbox" id="brollOn" checked> تشغيل B-roll</label></div>
+  <div class="row"><label>الكثافة</label><div class="chips" id="densChips"><span class="chip" data-v="light">قليلة (لقطة كل ٤ جمل)</span><span class="chip on" data-v="medium">متوسّطة (كل جملتين)</span><span class="chip" data-v="heavy">كثيفة (كل جملة)</span></div></div>
+  <div class="row"><label>الموديل</label><div class="chips" id="modelChips"><span class="chip on" data-v="seedance_2_0">Seedance 2.0 (أجود)</span><span class="chip" data-v="kling3_0">Kling 3.0</span><span class="chip" data-v="veo3_1">Veo 3.1</span></div></div>
+  <div class="row"><label>طابع اللقطات</label><div class="chips" id="lookChips"></div></div>
+  <div class="row"><label>أو اكتبه</label><input type="text" id="look" placeholder="cinematic, dark moody lighting, shallow depth of field, 35mm" style="direction:ltr;text-align:left"></div>
+  <div class="note">مرّة واحدة على جهازك: ثبّت أداة هيغسفيلد وسجّل دخولك بحسابك أنت —
+    <code>curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh</code> ثمّ <code>higgsfield auth login</code>. كل لقطة تُخصم من رصيدك، وكلود يسألك قبل كل دفعة.</div>
+</section>
+
+<section class="card" id="extras">
+  <h2>٦ · اللمسات</h2>
+  <div class="grid g3">
+    <label class="toggle opt"><input type="checkbox" id="hookZoom" checked> زوم خفيف على أوّل جملة (هوك)</label>
+    <label class="toggle opt"><input type="checkbox" id="progress" checked> شريط تقدّم فوق</label>
+    <label class="toggle opt"><input type="checkbox" id="outro" checked> كرت ختام بدعوة</label>
+  </div>
+  <div class="row" style="margin-top:12px"><label>نصّ الختام</label><input type="text" id="outroText" value="تابعني لمزيد" style="max-width:360px"></div>
+  <div class="row"><label>تدريج الألوان</label><div class="chips" id="gradeChips"><span class="chip on" data-v="none">كما هو</span><span class="chip" data-v="warm">دافئ</span><span class="chip" data-v="cool">بارد</span><span class="chip" data-v="film">فيلم</span><span class="chip" data-v="punch">حادّ</span></div></div>
+  <div class="row"><label>قصّ الصمت</label><div class="chips" id="trimChips"><span class="chip" data-v="light">خفيف</span><span class="chip on" data-v="medium">متوسّط</span><span class="chip" data-v="strong">قويّ</span><span class="chip" data-v="off">بلا قصّ</span></div></div>
+  <div class="row"><label>التفريغ</label><div class="chips" id="whisperChips"><span class="chip on" data-v="turbo">turbo (سريع ودقيق)</span><span class="chip" data-v="medium">medium</span><span class="chip" data-v="small">small (أسرع)</span></div>
+    <div class="chips" id="langChips2"><span class="chip on" data-v="auto">اللغة: تلقائي</span><span class="chip" data-v="ar">عربي</span><span class="chip" data-v="en">English</span></div></div>
+</section>
+
+<section class="card" id="scenes">
+  <h2>٧ · المشاهد المتحرّكة <small>كلود يضعها حيث تناسب كلامك</small></h2>
+  <p class="lead">هذه مكتبة المحرّك. ما تحتاج تختار منها الآن؛ اعرفها لتطلبها بالاسم: «حطّ عدّاد عند الرقم»، «ختم خطأ على هالجملة».</p>
+  <div class="scenes">
+    <div class="scene"><b>كرت عنوان</b><span>شاشة داكنة بسطور ضخمة تدخل سطراً سطراً — لفصل الأفكار</span></div>
+    <div class="scene"><b>ختم</b><span>كلمة مائلة تنضرب على الشاشة: «خطأ!»، «مهمّ»</span></div>
+    <div class="scene"><b>عدّاد</b><span>رقم يطلع من الصفر حتى قيمته: $5,000 · 87%</span></div>
+    <div class="scene"><b>قائمة صحّ</b><span>نقاط تظهر واحدة واحدة مع علامة ✓</span></div>
+    <div class="scene"><b>فقاعة تعليق</b><span>تعليق متابع ينكتب كأنّه حيّ — للردّ على سؤال</span></div>
+    <div class="scene"><b>تاق لاصق</b><span>بطاقة صغيرة تؤشّر عليك: اسمك، منصبك، «قبل/بعد»</span></div>
+    <div class="scene"><b>سبوت لايت</b><span>الغرفة تظلم وأنت تبقى منوّراً — للجملة المهمّة</span></div>
+    <div class="scene"><b>مصطلح</b><span>كلمة إنجليزية كبيرة وترجمتها تحتها</span></div>
+    <div class="scene"><b>أعمدة</b><span>مقارنة أرقام بأشرطة تنمو</span></div>
+    <div class="scene"><b>مواجهة</b><span>شيء ضدّ شيء: «تحليل ⇄ تنفيذ»</span></div>
+    <div class="scene"><b>ومضة</b><span>فلاش أبيض على الضربة</span></div>
+  </div>
+</section>
+
+</main>
+
+<aside class="side">
+  <h3>معاينة حيّة — تتحدّث مع كل اختيار</h3>
+  <div class="phone"><div class="vid"><div class="face"></div></div><div class="stage" id="mainStage"></div><div class="ui"></div></div>
+  <div class="sum" id="summary"></div>
+</aside>
+</div>
+
+<div class="spacer"></div>
+<div class="savebar">
+  <button class="btn" id="save">احفظ الإعدادات</button>
+  <button class="btn ghost" id="reset">رجّع الافتراضي</button>
+  <span class="status" id="status">لم يُحفظ بعد</span>
+  <span class="credit">🤲 هذي الأداة هدية من <b>حسين المتروك</b> — ادعِ له بالخير</span>
+</div>
+
+<script src="/engine.js"></script>
+<script>
+const TYPES = [
+  {k:'talk', ic:'🎙️', t:'كلام للكاميرا', d:'تتكلّم وأنت تطالع الكاميرا. كابشن يتبع صوتك، زوم على الهوك، ولقطات B-roll تُقطع حين تذكر شيئاً يُرى.'},
+  {k:'voiceover', ic:'🎬', t:'تعليق صوتي + لقطات', d:'صوتك فوق لقطات مولَّدة تغطّي الصورة كلّها. وجهك يظهر حيث لا لقطة. للقصص والشروحات.'},
+  {k:'tips', ic:'📋', t:'قائمة نصايح', d:'عنوان مثبّت فوق، ورقم كل نقطة يطلع في دائرة مع جملتها. «٣ أخطاء…»، «٥ قواعد…».'},
+  {k:'story', ic:'🎭', t:'قصّة بهوك', d:'كرت داكن بجملة الهوك قبل أن يظهر وجهك، ثمّ كلامك. للتجارب والاعترافات.'},
+];
+const CAPS = [
+  {k:'keyword', t:'الكلمة المفتاح', d:'الجملة كاملة، والكلمة المهمّة بلونك. الخيار الآمن لكل يوم.'},
+  {k:'oneword', t:'كلمة كلمة', d:'كلمة ضخمة واحدة بالمرّة تنبض مع صوتك. للهوكات والطاقة.'},
+  {k:'karaoke', t:'كاريوكي', d:'الجملة ظاهرة والكلمة المنطوقة تنوّر وتكبر.'},
+  {k:'weightshift', t:'خفيف وثقيل', d:'الكلمات تدخل واحدة واحدة بخطّ خفيف، والمهمّ ثقيل بلونك. نظيف وحديث.'},
+  {k:'boxed', t:'صندوق', d:'الكلمة المهمّة داخل صندوق ملوّن. للأرقام والأسماء.'},
+  {k:'subtitle', t:'ترجمة سينمائية', d:'سطر صغير أنيق تحت. للمحتوى الهادئ والقصص.'},
+  {k:'outline', t:'مفرّغ', d:'كل الكلمات عريضة، والمهمّة مفرّغة بحدود لونك. جريء ورياضيّ.'},
+];
+const SWATCHES = ['#FCC022','#6BC5B0','#FF4B3A','#4F8CFF','#B36BFF','#FF8A3D','#2EE59D','#FFFFFF'];
+const LOOKS = [
+  {t:'سينمائي داكن', v:'cinematic, dark moody lighting, shallow depth of field, 35mm'},
+  {t:'فاتح نظيف', v:'bright clean minimal, soft daylight, white and beige tones, 50mm'},
+  {t:'واقعي دافئ', v:'realistic documentary, warm golden hour light, handheld feel'},
+  {t:'تقني أزرق', v:'tech aesthetic, cool blue screen light, glossy surfaces, slow dolly'},
+  {t:'فخم ذهبي', v:'luxury, black and gold palette, dramatic rim light, slow motion'},
+];
+let cfg = null, fontsCat = [], engines = {}, raf = null, t0 = performance.now();
+const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+
+function chips(id, val, onPick){
+  $$('#'+id+' .chip').forEach(c => { c.classList.toggle('on', c.dataset.v === String(val)); c.onclick = () => { onPick(c.dataset.v); chips(id, c.dataset.v, onPick); refresh(); }; });
+}
+function fontLink(fam){
+  const id = 'gf-' + fam.replace(/\W/g,'');
+  if (document.getElementById(id)) return;
+  const l = document.createElement('link'); l.id = id; l.rel = 'stylesheet';
+  l.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fam).replace(/%20/g,'+') + ':wght@300;400;700;900&display=swap';
+  document.head.appendChild(l);
+}
+
+function buildTypes(){
+  $('#typeGrid').innerHTML = TYPES.map(x => `<div class="opt" data-k="${x.k}"><div class="ic">${x.ic}</div><div class="t">${x.t}</div><div class="d">${x.d}</div></div>`).join('');
+  $$('#typeGrid .opt').forEach(o => o.onclick = () => { cfg.type = o.dataset.k; refresh(); });
+}
+function buildFonts(){
+  const cats = [...new Set(fontsCat.map(f => f.cat))];
+  $('#catChips').innerHTML = `<span class="chip on" data-c="all">كل الأنواع</span>` + cats.map(c => `<span class="chip" data-c="${c}">${c}</span>`).join('');
+  $$('#catChips .chip').forEach(c => c.onclick = () => { $$('#catChips .chip').forEach(x => x.classList.remove('on')); c.classList.add('on'); renderFonts(); });
+  $$('#langChips .chip').forEach(c => c.onclick = () => { $$('#langChips .chip').forEach(x => x.classList.remove('on')); c.classList.add('on'); renderFonts(); });
+  $('#fq').oninput = renderFonts; $('#sample').oninput = renderFonts;
+  renderFonts();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { fontLink(e.target.dataset.f); io.unobserve(e.target); } }), {root: $('#fontGrid'), rootMargin:'200px'});
+  window._fio = io;
+}
+function renderFonts(){
+  const lang = $('#langChips .chip.on').dataset.l, cat = $('#catChips .chip.on')?.dataset.c || 'all', q = $('#fq').value.trim().toLowerCase(), sample = $('#sample').value;
+  const list = fontsCat.filter(f => (lang === 'all' || f.lang === lang) && (cat === 'all' || f.cat === cat) && (!q || f.n.toLowerCase().includes(q)));
+  $('#fontGrid').innerHTML = list.map(f => `<div class="fcard ${cfg.font.ar === f.n || cfg.font.latin === f.n ? 'on' : ''}" data-f="${f.n}" data-l="${f.lang}"><div class="nm"><b>${f.n}</b><span>${f.cat} · ${f.w}</span></div><div class="sm" dir="auto" style="font-family:'${f.n}'">${f.lang === 'english' ? 'Risk Reward 1:3 — ' + sample : sample}</div></div>`).join('');
+  $$('#fontGrid .fcard').forEach(c => { window._fio && window._fio.observe(c); c.onclick = () => { if (c.dataset.l === 'arabic') cfg.font.ar = c.dataset.f; else cfg.font.latin = c.dataset.f; fontLink(c.dataset.f); renderFonts(); refresh(); }; });
+}
+function buildCaps(){
+  $('#capTiles').innerHTML = CAPS.map(c => `<div class="tile" data-k="${c.k}"><div class="pv"><div class="stage" id="st-${c.k}"></div></div><div class="cap"><div class="t">${c.t}</div><div class="d">${c.d}</div></div></div>`).join('');
+  CAPS.forEach(c => { engines[c.k] = new ReelEngine(document.getElementById('st-'+c.k)); });
+  $$('#capTiles .tile').forEach(t => t.onclick = () => { cfg.caption.style = t.dataset.k; refresh(); });
+  engines.main = new ReelEngine($('#mainStage'));
+}
+function buildBrand(){
+  $('#swatches').innerHTML = SWATCHES.map(c => `<span class="swc" data-c="${c}" style="background:${c}"></span>`).join('');
+  $$('#swatches .swc').forEach(s => s.onclick = () => { cfg.brand.accent = s.dataset.c; $('#accent').value = s.dataset.c; refresh(); });
+  $('#accent').oninput = e => { cfg.brand.accent = e.target.value; refresh(); };
+  $('#handle').oninput = e => { cfg.brand.handle = e.target.value.trim(); refresh(); };
+  $('#brandName').oninput = e => { cfg.brand.name = e.target.value.trim(); refresh(); };
+  $('#lookChips').innerHTML = LOOKS.map(l => `<span class="chip" data-v="${l.v}">${l.t}</span>`).join('');
+  $('#look').oninput = e => { cfg.broll.look = e.target.value; refresh(); };
+  $('#brollOn').onchange = e => { cfg.broll.on = e.target.checked; refresh(); };
+  ['hookZoom','progress','outro'].forEach(k => $('#'+k).onchange = e => { cfg.extras[k] = e.target.checked; refresh(); });
+  $('#outroText').oninput = e => { cfg.extras.outroText = e.target.value; refresh(); };
+  $('#customFont').onchange = e => { const v = e.target.value.trim(); if (v) { cfg.font.ar = v; refresh(); } };
+}
+function syncInputs(){
+  $('#accent').value = cfg.brand.accent; $('#handle').value = cfg.brand.handle || ''; $('#brandName').value = cfg.brand.name || '';
+  $('#look').value = cfg.broll.look || ''; $('#brollOn').checked = !!cfg.broll.on;
+  ['hookZoom','progress','outro'].forEach(k => $('#'+k).checked = !!cfg.extras[k]); $('#outroText').value = cfg.extras.outroText || '';
+  chips('sizeChips', cfg.caption.size, v => cfg.caption.size = v);
+  chips('posChips', cfg.caption.position, v => cfg.caption.position = v);
+  chips('themeChips', cfg.brand.theme, v => cfg.brand.theme = v);
+  chips('densChips', cfg.broll.density, v => cfg.broll.density = v);
+  chips('modelChips', cfg.broll.model, v => cfg.broll.model = v);
+  chips('lookChips', cfg.broll.look, v => { cfg.broll.look = v; $('#look').value = v; });
+  chips('gradeChips', cfg.extras.grade, v => cfg.extras.grade = v);
+  chips('trimChips', cfg.extras.trim, v => cfg.extras.trim = v);
+  chips('whisperChips', cfg.whisper.model, v => cfg.whisper.model = v);
+  chips('langChips2', cfg.whisper.language, v => cfg.whisper.language = v);
+}
+function refresh(){
+  $$('#typeGrid .opt').forEach(o => o.classList.toggle('on', o.dataset.k === cfg.type));
+  $$('#capTiles .tile').forEach(t => t.classList.toggle('on', t.dataset.k === cfg.caption.style));
+  $$('#swatches .swc').forEach(s => s.classList.toggle('on', s.dataset.c.toLowerCase() === cfg.brand.accent.toLowerCase()));
+  $('#slotAr').textContent = cfg.font.ar; $('#slotLt').textContent = cfg.font.latin;
+  fontLink(cfg.font.ar); fontLink(cfg.font.latin);
+  const plan = ReelEngine.demo(cfg);
+  engines.main.load(plan, cfg, '');
+  CAPS.forEach(c => { const cc = JSON.parse(JSON.stringify(cfg)); cc.caption.style = c.k; cc.caption.position = 'center'; cc.extras.progress = false; cc.brand.handle = ''; cc.extras.outro = false; cc.type = 'talk'; engines[c.k].load(ReelEngine.demo(cc), cc, ''); });
+  const T = TYPES.find(x => x.k === cfg.type), C = CAPS.find(x => x.k === cfg.caption.style);
+  $('#summary').innerHTML = `<div>النوع: <b>${T.t}</b> · الكابشن: <b>${C.t}</b> (${{s:'صغير',m:'وسط',l:'كبير'}[cfg.caption.size]})</div>
+    <div>الخطّ: <b>${cfg.font.ar}</b> + <b>${cfg.font.latin}</b> · اللون <b>${cfg.brand.accent}</b></div>
+    <div>B-roll: <b>${cfg.broll.on ? {light:'قليل',medium:'متوسّط',heavy:'كثيف'}[cfg.broll.density] + ' · ' + cfg.broll.model : 'مطفأ'}</b></div>
+    <div>التدريج: <b>${cfg.extras.grade}</b> · قصّ الصمت: <b>${cfg.extras.trim}</b>${cfg.extras.outro ? ' · ختام: <b>' + (cfg.extras.outroText||'') + '</b>' : ''}</div>`;
+  $('#status').textContent = 'فيه تغييرات لم تُحفظ'; $('#status').className = 'status';
+}
+function loop(){
+  const now = (performance.now() - t0) / 1000;
+  const plan = engines.main.plan; if (plan) { engines.main.seek(now % (plan.duration + 0.4)); }
+  // the style tiles loop over the spoken part only, so no tile ever sits empty
+  CAPS.forEach(c => { const e = engines[c.k]; if (e.plan) { const S = e.plan.sentences; e.seek(now % (S[S.length - 1].end + 0.3)); } });
+  raf = requestAnimationFrame(loop);
+}
+async function save(){
+  $('#save').disabled = true;
+  try {
+    const r = await fetch('/api/config', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(cfg)});
+    const j = await r.json();
+    if (j.ok) { $('#status').textContent = '✓ انحفظ في ' + j.path + ' — ارجع لكلود وقل: «عدّل الريل»'; $('#status').className = 'status ok'; }
+    else throw new Error(j.error);
+  } catch (e) { $('#status').textContent = 'ما انحفظ: ' + e.message; }
+  $('#save').disabled = false;
+}
+async function init(){
+  cfg = await (await fetch('/api/config')).json();
+  fontsCat = await (await fetch('/fonts.json')).json();
+  try { const cf = await (await fetch('/api/custom-fonts')).json(); $('#customDir').textContent = cf.dir; if (cf.families.length) $('#customList').textContent = 'موجود: ' + cf.families.join('، '); } catch (e) {}
+  buildTypes(); buildFonts(); buildCaps(); buildBrand(); syncInputs(); refresh();
+  $('#status').textContent = 'الإعدادات المحفوظة محمّلة'; $('#status').className = 'status ok';
+  $('#save').onclick = save;
+  $('#reset').onclick = async () => { cfg = await (await fetch('/api/config?defaults=1')).json(); syncInputs(); refresh(); };
+  loop();
+  $$('.nav a').forEach(a => a.onclick = () => $$('.nav a').forEach(x => x.classList.toggle('on', x === a)));
+}
+init();
+</script>
+</body>
+</html>
